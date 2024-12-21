@@ -1,0 +1,64 @@
+<div class="wrapper">
+  
+  <div class="content">
+    <div class="container mt-4">
+      <h4 class="mb-4">Place Order</h4>
+      <form (ngSubmit)="onSubmit(orderForm)" #orderForm="ngForm" style="color: #000000b0;font-size: 1.1em;">
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label for="symbol" class="form-label">Symbol</label>
+            <input type="text" class="form-control" id="symbol" name="symbol" required ngModel>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="side" class="form-label">Side</label>
+            <select class="form-select" id="side" name="side" required ngModel>
+              <option value="BUY">BUY</option>
+              <option value="SELL">SELL</option>
+            </select>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="type" class="form-label">Type</label>
+            <select class="form-select" id="type" name="type" required ngModel>
+              <option value="LIMIT">LIMIT</option>
+              <option value="MARKET">MARKET</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label for="quantity" class="form-label">Quantity</label>
+            <input type="text" class="form-control" id="quantity" name="quantity" required ngModel>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="timeInForce" class="form-label">Time In Force</label>
+            <input type="text" class="form-control" id="timeInForce" name="timeInForce" required ngModel>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="positionSide" class="form-label">Position Side</label>
+            <select class="form-select" id="positionSide" name="positionSide" required ngModel>
+              <option value="LONG">LONG</option>
+              <option value="SHORT">SHORT</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input type="text" class="form-control" id="price" name="price" required ngModel>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="spreadPercent" class="form-label">Spread Percent</label>
+            <input type="number" class="form-control" id="spreadPercent" name="spreadPercent" required ngModel>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="step" class="form-label">Step</label>
+            <input type="number" class="form-control" id="step" name="step" required ngModel>
+          </div>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+    <app-loader *ngIf="isLoading"></app-loader>
+  </div>

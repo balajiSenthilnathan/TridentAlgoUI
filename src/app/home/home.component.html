@@ -1,0 +1,215 @@
+<div class="row">
+  <div class="col-md-9" style="padding: 3%;padding-top: 2%;">
+    <div class="d-flex justify-content-between align-items-center mb-2">
+      <h4 class="flex-grow-1">OPEN ORDERS</h4>
+      <div class="form-group d-flex align-items-center">
+        <label for="symbolSelect" class="me-2">Symbol</label>
+        <select id="symbolSelect" class="form-control custom-select" (change)="onSymbolChange($event)">
+          <option *ngFor="let symbol of symbols" [value]="symbol">{{ symbol }}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="table-responsive custom-scroll">
+      <table class="table table-bordered table-hover table-striped custom-table">
+        <thead class="thead-dark">
+          <tr>
+            <th>Select</th>
+            <th>Order ID</th>
+            <th>Symbol</th>
+            <th>Type</th>
+            <th>Side</th>
+            <th *ngIf="isHedgeMode">Position</th>
+            <th>Status</th>
+            <th>Price</th>
+            <th>Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="openOrders.length === 0">
+            <td colspan="9" class="text-center">No open orders available.</td>
+          </tr>
+          <tr *ngFor="let item of openOrders">
+            <td>
+              <input type="checkbox" (change)="onCheckboxChange($event, item.orderId)">
+            </td>
+            <td>{{ item.orderId }}</td>
+            <td>{{ item.symbol }}</td>
+            <td>{{ item.type }}</td>
+            <td>{{ item.side }}</td>
+            <td *ngIf="isHedgeMode">{{ item.positionSide }}</td>
+            <td>{{ item.status }}</td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.origQty }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="d-flex justify-content-end mt-3">
+      <button class="btn btn-secondary me-2" (click)="deleteAllOpenOrders()">Cancel All</button>
+      <button class="btn btn-primary" (click)="deleteSelectedOrders()">Cancel Selected Orders</button>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="wrapper">
+      <div class="content">
+        <div class="container mt-3">
+          <div>
+            <h4 class="mb-4" style="text-align: center; font-size: 1.3rem;">PLACE ORDER</h4>
+          </div>
+          <form (ngSubmit)="onSubmit(orderForm)" #orderForm="ngForm" style="color: #000000b0;font-size: 1.1em;">
+            <div class="row">
+              <!-- Symbol -->
+              <div class="col-md-12 mb-3">
+                <input type="text" placeholder="Symbol" class="form-control form-control-sm" id="symbol" name="symbol"
+                  required ngModel #symbol="ngModel" [ngClass]="{'is-invalid': symbol.invalid && symbol.touched}"
+                  (blur)="getMarketPriceBySymbol($event)">
+                <div *ngIf="symbol.invalid && symbol.touched" class="invalid-feedback">
+                  Symbol is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <!-- Side -->
+              <div class="col-md-6 mb-3">
+                <select class="form-select form-select-sm" id="side" name="side" required ngModel #side="ngModel"
+                  [ngClass]="{'is-invalid': side.invalid && side.touched}" (change)="triggerSideChangeAction(orderForm)">
+                  <option value="" selected>-- Side --</option>
+                  <option value="BUY">BUY</option>
+                  <option value="SELL">SELL</option>
+                  <option value="BOTH">BOTH</option>
+                </select>
+                <div *ngIf="side.invalid && side.touched" class="invalid-feedback">
+                  Side selection is required.
+                </div>
+              </div>
+
+              <!-- Type -->
+              <div class="col-md-6 mb-3">
+                <select class="form-select form-select-sm" id="type" name="type" required ngModel #type="ngModel"
+                  [ngClass]="{'is-invalid': type.invalid && type.touched}">
+                  <option value="" selected>-- Type --</option>
+                  <option value="LIMIT">LIMIT</option>
+                  <option value="MARKET">MARKET</option>
+                </select>
+                <div *ngIf="type.invalid && type.touched" class="invalid-feedback">
+                  Type selection is required.
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <!-- Radio Buttons: Select Option -->
+              <div class="col-md-12">
+                <div class="radio-group">
+                  <label class="radio-label">Select Quantity Type:</label>
+                  <div class="radio-options">
+                    <label class="radio-container">
+                      <input type="radio" value="USDT" id="quantityType"
+                      name="quantityType" required ngModel #quantityType="ngModel">
+                      <span class="radio-custom"></span> USDT
+                    </label>
+                    <label class="radio-container">
+                      <input type="radio" value="SIZE" id="quantityType"
+                      name="quantityType" required ngModel #quantityType="ngModel">
+                      <span class="radio-custom"></span> Size
+                    </label>
+                  </div>
+                </div>
+              </div>
+            
+            <!-- Quantity -->
+            <div class="col-md-12 mb-3">
+              <input type="number" placeholder="Quantity" class="form-control form-control-sm" id="quantity"
+                name="quantity" required ngModel #quantity="ngModel"
+                [ngClass]="{'is-invalid': quantity.invalid && quantity.touched}">
+              <div *ngIf="quantity.invalid && quantity.touched" class="invalid-feedback">
+                Quantity is required and must be a positive number.
+              </div>
+            </div>
+
+            <!-- Time In Force -->
+            <div class="col-md-12 mb-3">
+              <input type="text" placeholder="Time In Force" class="form-control form-control-sm" id="timeInForce"
+                name="timeInForce" required ngModel #timeInForce="ngModel"
+                [ngClass]="{'is-invalid': timeInForce.invalid && timeInForce.touched}">
+              <div *ngIf="timeInForce.invalid && timeInForce.touched" class="invalid-feedback">
+                Time In Force is required.
+              </div>
+            </div>
+
+            <!-- Position Side -->
+            <!-- <div *ngIf="isHedgeMode" class="col-md-12 mb-3">
+              <select class="form-select form-select-sm" id="positionSide" name="positionSide" required ngModel
+                #positionSide="ngModel" [ngClass]="{'is-invalid': positionSide.invalid && positionSide.touched}">
+                <option value="" selected>-- Position Side --</option>
+                <option value="LONG">LONG</option>
+                <option value="SHORT">SHORT</option>
+                <option value="BOTH">BOTH</option>
+              </select>
+              <div *ngIf="positionSide.invalid && positionSide.touched" class="invalid-feedback">
+                Position Side selection is required.
+              </div>
+            </div> -->
+        </div>
+
+        <div class="row">
+          <!-- Price -->
+          <div class="col-md-12 mb-3">
+            <input type="number" placeholder="Price" class="form-control form-control-sm" id="price" name="price"
+              required ngModel #price="ngModel" [ngClass]="{'is-invalid': price.invalid && price.touched}">
+            <div *ngIf="price.invalid && price.touched" class="invalid-feedback">
+              Price is required and must be a positive number.
+            </div>
+          </div>
+
+          <!-- Spread Percent -->
+          <div class="col-md-12 mb-3" *ngIf="!isBothSides">
+            <input type="number" placeholder="Spread Percent" class="form-control form-control-sm" id="spreadPercent"
+              name="spreadPercent" required ngModel #spreadPercent="ngModel"
+              [ngClass]="{'is-invalid': spreadPercent.invalid && spreadPercent.touched}">
+            <div *ngIf="spreadPercent.invalid && spreadPercent.touched" class="invalid-feedback">
+              Spread Percent is required.
+            </div>
+          </div>
+
+          <!-- Seperate Spread Percent for BOTH side -->
+          <div class="col-md-6 mb-3" *ngIf="isBothSides">
+            <input type="number" placeholder="Buy Spread" class="form-control form-control-sm" id="buySpreadPercent"
+              name="buySpreadPercent" required ngModel #buySpreadPercent="ngModel"
+              [ngClass]="{'is-invalid': buySpreadPercent.invalid && buySpreadPercent.touched}">
+            <div *ngIf="buySpreadPercent.invalid && buySpreadPercent.touched" class="invalid-feedback">
+             Buy Spread Percent is required.
+            </div>
+          </div>
+          <div class="col-md-6 mb-3"*ngIf="isBothSides" >
+            <input type="number" placeholder="Sell Spread" class="form-control form-control-sm" id="sellSpreadPercent"
+              name="sellSpreadPercent" required ngModel #sellSpreadPercent="ngModel"
+              [ngClass]="{'is-invalid': sellSpreadPercent.invalid && sellSpreadPercent.touched}">
+            <div *ngIf="sellSpreadPercent.invalid && sellSpreadPercent.touched" class="invalid-feedback">
+              Sell Spread Percent is required.
+            </div>
+          </div>
+
+
+          <!-- Step -->
+          <div class="col-md-12 mb-3">
+            <input type="number" placeholder="Step" class="form-control form-control-sm" id="step" name="step" required
+              ngModel #step="ngModel" [ngClass]="{'is-invalid': step.invalid && step.touched}">
+            <div *ngIf="step.invalid && step.touched" class="invalid-feedback">
+              Step is required.
+            </div>
+          </div>
+        </div>
+        <div class="d-flex justify-content-end mt-3">
+          <button type="button" class="btn btn-secondary me-2" (click)="clearForm(orderForm)">Reset</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        </form>
+      </div>
+      <app-loader *ngIf="isLoading"></app-loader>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,392 @@
+/* Custom Table Styles */
+.custom-table {
+  background-color: #f9f9f9;
+  /* Light grey background */
+  border-radius: 5px;
+  /* Rounded corners */
+  overflow: hidden;
+  /* Prevent overflow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow */
+}
+
+.table thead.thead-dark th {
+  background-color: #343a40;
+  /* Dark background for table header */
+  color: #ffffff;
+  /* White text for table header */
+  text-align: center;
+  /* Centered text */
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f1f1f1;
+  /* Light grey background on row hover */
+}
+
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid #dee2e6;
+  /* Border color */
+}
+
+.table td {
+  vertical-align: middle;
+  /* Center content vertically */
+  text-align: center;
+  /* Center content horizontally */
+}
+
+.custom-scroll {
+  max-height: 25.9em;
+  /* Adjust the height as needed */
+  overflow-y: auto;
+  /*border: 1px solid #ccc;*/
+  border-radius: 5px;
+}
+
+/* Style the scrollbar track */
+.custom-scroll::-webkit-scrollbar {
+  width: 10px;
+  /* Adjust the width as needed */
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 5px;
+}
+
+/* Style the scrollbar thumb */
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: #ff7e5f;
+  border-radius: 5px;
+}
+
+/* Add hover effect to the scrollbar thumb */
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* For Firefox */
+.custom-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #ff7e5f #f1f1f1;
+}
+
+/* Add a subtle box shadow to the container 
+.custom-scroll {
+  /*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}*/
+
+.table thead th {
+  position: sticky;
+  top: 0;
+  background-color: #343a40;
+  color: #fff;
+  z-index: 1;
+}
+
+h2.text-center {
+  color: #343a40;
+  /* Dark color for heading */
+  font-weight: bold;
+  /* Bold font */
+}
+
+input[type="checkbox"] {
+  transform: scale(1.2);
+  /* Increase size of checkboxes */
+  margin-top: 5px;
+}
+
+.btn-primary {
+  background-color: #ff6600;
+  /* Custom button color */
+  border-color: #ff6600;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #e55d00;
+  /* Darker shade on hover */
+  border-color: #e55d00;
+}
+
+@media (max-width: 767.98px) {
+  .custom-table {
+    font-size: 0.9rem;
+    /* Smaller font size for mobile */
+  }
+}
+
+.custom-select {
+  width: 200px;
+  /* Increase the width of the select element */
+  padding: 0.5rem;
+  /* Adjust padding for better appearance */
+  border: 1px solid #ced4da;
+  /* Add a border */
+  border-radius: 4px;
+  /* Add border radius for smoother edges */
+  background-color: #ffffff;
+  /* Set background color */
+  appearance: none;
+  /* Remove default arrow */
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 16px;
+}
+
+.me-2 {
+  margin-right: 0.5rem;
+  /* Adjust margin between label and select */
+}
+
+@media (max-width: 767.98px) {
+  .custom-select {
+    width: 100%;
+    /* Full width on smaller screens */
+  }
+}
+
+.form-control,
+.form-select {
+  font-size: 0.9rem;
+  padding: 8px 12px;
+  border-radius: 5px;
+}
+
+.form-label {
+  font-weight: bold;
+  color: #495057;
+}
+
+.btn-primary {
+  background-color: #ff7e5f;
+  border-color: #eb5e28;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+h2,
+h4 {
+  color: #424242cf !important;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.container {
+  max-width: 100%;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem;
+}
+
+.me-2 {
+  margin-right: 0.5rem;
+}
+
+.custom-select {
+  appearance: none;
+}
+
+.wrapper {
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+.wrapper .form-control,
+.wrapper .form-select {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #333;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.wrapper .form-control::placeholder,
+.wrapper .form-select::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.wrapper .form-control:focus,
+.wrapper .form-select:focus {
+  background-color: rgba(255, 255, 255, 1);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.wrapper h4 {
+  margin-bottom: 20px;
+}
+
+.wrapper .btn-primary {
+  background-color: #ff7e5f;
+  color: #ffffff;
+  border: none;
+}
+
+.wrapper .btn-primary:hover {
+  background-color: #eb5e28;
+  color: #ffffff;
+}
+
+.wrapper .btn-primary:focus,
+.wrapper .btn-primary:active {
+  background-color: #d94f1a;
+  color: #ffffff;
+}
+
+.wrapper .form-control,
+.wrapper .form-select {
+  font-size: 0.85rem;
+  /* Reduces font size */
+  padding: 0.375rem 0.75rem;
+  /* Makes the padding smaller */
+  height: 2rem;
+  /* Reduce height of inputs */
+  border-radius: 0.25rem;
+  /* Keep rounded corners */
+}
+
+.wrapper .form-control-sm,
+.wrapper .form-select-sm {
+  font-size: 0.8rem;
+  /* Further reduce the font size */
+  padding: 0.25rem 0.5rem;
+  /* Make padding even smaller */
+  height: 1.75rem;
+  /* Reduce height of inputs */
+}
+
+.wrapper .form-group {
+  margin-bottom: 1rem;
+  /* Reduces space between fields */
+}
+
+.wrapper form button {
+  font-size: 0.9rem;
+  /* Slightly smaller button text */
+  padding: 0.5rem 1rem;
+  /* Smaller button padding */
+}
+
+.wrapper .invalid-feedback {
+  font-size: 0.75rem;
+  /* Smaller error text */
+}
+
+.input-group-append {
+  display: flex;
+  align-items: center;
+}
+
+.input-group-append .btn {
+  background-color: #FF5722;
+  /* Button background color */
+  border: none;
+  color: white;
+  /* Button text color */
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding: 0.375rem 0.75rem;
+}
+
+.input-group-append .btn:hover {
+  background-color: #E64A19;
+  /* Button hover background color */
+}
+
+/* Style for the radio buttons container */
+.radio-group {
+  font-size: 1em;
+  margin-bottom: 1em;
+}
+
+/* Style for the radio button label */
+.radio-label {
+  color: #7f8084;
+  display: block;
+  margin-bottom: 0.5em;
+  font-size: 0.8rem;
+}
+
+/* Style for each radio button option */
+.radio-options {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  align-items: center;
+}
+
+/* Container for each radio button */
+.radio-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+/* Custom radio button circle */
+.radio-container input[type="radio"] {
+  display: none;
+}
+
+.radio-container .radio-custom {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #f99a83;
+  margin-right: 10px;
+  position: relative;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.radio-container input[type="radio"]:checked+.radio-custom {
+  background-color: #E64A19;
+  border-color: #E64A19;
+}
+
+.radio-container .radio-custom::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: background-color 0.3s;
+}
+
+/* Hover effect for the radio button */
+.radio-container:hover .radio-custom {
+  border-color: #E64A19;
+}
+
+.radio-container input[type="radio"]:checked+.radio-custom {
+  background-color: #E64A19;
+}

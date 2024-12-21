@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    font-family: 'math','Arial', sans-serif;
+    font-size: 0.875rem; /* 14px if the base font-size is 16px */
+  
+  }
+  
+  .navbar-brand {
+    font-weight: bold;
+  }
+  
+  .jumbotron {
+    padding: 2rem 1rem;
+    background-color: #e9ecef;
+    border-radius: .3rem;
+  }
+  
+  footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem 0;
+    background-color: #f8f9fa;
+  }
