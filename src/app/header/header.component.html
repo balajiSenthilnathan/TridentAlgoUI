@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light custom-navbar" style="height: 60px;">
+  <div class="container-fluid">
+      <a class="navbar-brand custom-brand" href="#">Trident Algo</a>
+      <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <div class="form-check form-switch d-flex align-items-center" style="margin-right: 1.5rem;">
+                <label class="form-check-label custom-pre-label me-2" for="customSwitch">One Way</label>
+                <input class="form-check-input custom-toggle" type="checkbox" id="customSwitch" [(ngModel)]="isHedgeMode" (change)="onToggleChange($event)" checked>
+                <label class="form-check-label custom-label ms-2" for="customSwitch">Hedge</label>
+            </div>
+          
+              <!-- <li class="nav-item">
+                  <a class="nav-link custom-nav-link" routerLink="/">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link custom-nav-link" routerLink="/placeOrder">Place Order</a>
+              </li> -->
+          </ul>
+      </div>
+  </div>
+</nav>

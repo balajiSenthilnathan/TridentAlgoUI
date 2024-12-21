@@ -1,0 +1,137 @@
+/* Custom Navbar Styles */
+.custom-navbar {
+    background-color: #3F51B5 !important; /* Dark background */
+    border-bottom: 2px solid #ff6600; /* Accent border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.custom-brand {
+    color: #ffffff !important; /* White text for brand */
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.custom-brand:hover {
+    color: #ff6600 !important; /* Accent color on hover */
+}
+
+.custom-toggler {
+    border: none; /* Remove border from the toggler */
+}
+
+.custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=UTF8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%2877, 77, 77, 0.5%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    filter: invert(1); /* Invert the color for dark background */
+}
+
+.custom-nav-link {
+    color: #cccccc !important; /* Light grey text for links */
+    font-size: 1.2rem;
+    margin: 0 10px; /* Spacing between links */
+    transition: color 0.3s ease, background-color 0.3s ease;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.custom-nav-link:hover {
+    color: #ffffff !important; /* White text on hover */
+    background-color: #ff6600; /* Accent background on hover */
+}
+
+.custom-nav-link.active {
+    color: #ffffff !important; /* White text for active link */
+    background-color: #ff6600; /* Accent background for active link */
+}
+
+/* Custom Toggle Switch Styling */
+.form-check-input {
+    width: 50px;
+    height: 25px;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    position: relative;
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  
+  .form-check-input::before {
+    content: "";
+    position: absolute;
+    width: 21px;
+    height: 21px;
+    background-color: #ff5722; /* Knob color */
+    border-radius: 50%;
+    top: 1px;
+    left: 1px;
+    transition: transform 0.3s, background-color 0.3s;
+  }
+  
+  .form-check-input:checked {
+    background-color: #ff5722; /* Toggle background when checked */
+    border-color: #ff5722;
+  }
+  
+  .form-check-input:checked::before {
+    transform: translateX(25px);
+    background-color: #6c757d; /* Knob color when checked */
+  }
+  
+  .form-check-label {
+    font-size: 1.1em;
+    font-weight: 500;
+    margin-left: 10px;
+    color: #ffffff; /* Label color to contrast with blue background */
+  }
+
+/* Custom Toggle Switch Styling */
+.custom-toggle {
+    width: 40px; /* Reduced width */
+    height: 20px; /* Reduced height */
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    position: relative;
+    appearance: none;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  
+  .custom-toggle::before {
+    content: "";
+    position: absolute;
+    width: 16px; /* Reduced knob size */
+    height: 16px;
+    background-color: #ff5722; /* Knob color */
+    border-radius: 50%;
+    top: 1px;
+    left: 1px;
+    transition: transform 0.3s, background-color 0.3s;
+  }
+  
+  .custom-toggle:checked {
+    background-color: #fff; /* Toggle background when checked */
+    border-color: #ccc;
+  }
+  
+  .custom-toggle:checked::before {
+    transform: translateX(20px); /* Adjusted for reduced size */
+    background-color: #ff5722; /* Knob color when checked */
+  }
+  
+  .custom-label,
+  .custom-pre-label {
+    font-size: 1em; /* Adjusted font size */
+    font-weight: 600; /* Increased font weight */
+    color: #ffffff; /* Label color to contrast with blue background */
+  }
+  
+  .custom-pre-label {
+    margin-right: 2.7rem !important; /* Space between the pre-label and toggle */
+  }
+  
+  
